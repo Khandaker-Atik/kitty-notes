@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitty Notepad 🐱</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="title-section">
+                <h1>Kitty Notepad</h1>
+                <div class="cat-animation">
+                    <div class="cat-head">
+                        <div class="cat-ears">
+                            <div class="ear-left"></div>
+                            <div class="ear-right"></div>
+                        </div>
+                        <div class="cat-face">
+                            <div class="cat-eyes">
+                                <div class="eye-left"></div>
+                                <div class="eye-right"></div>
+                            </div>
+                            <div class="cat-nose"></div>
+                            <div class="cat-mouth">
+                                <div class="mouth-left"></div>
+                                <div class="mouth-right"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cat-paw"></div>
+                </div>
+            </div>
+        </header>
+
+
+        <main class="main-content">
+
+            <div class="toolbar">
+                <button class="btn" onclick="clearText()">
+                    <span class="btn-icon">🗑️</span>
+                    Clear
+                </button>
+                <button class="btn" onclick="downloadTxt()">
+                    <span class="btn-icon">📄</span>
+                    Save as TXT
+                </button>
+                <button class="btn" onclick="downloadPDF()">
+                    <span class="btn-icon">📑</span>
+                    Save as PDF
+                </button>
+            </div>
+
+                <textarea 
+                    id="notepad" 
+                    class="notepad" 
+                    placeholder="Start typing your purr-fect notes here... 🐾"
+                    spellcheck="true"
+                ></textarea>
+                
+
+                <div class="floating-cat">
+                    <span class="cat-emoji">😺</span>
+                </div>
+            </div>
+
+
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <span class="stat-icon">📝</span>
+                    <span class="stat-label">Words:</span>
+                    <span id="word-count" class="stat-value">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-icon">🔤</span>
+                    <span class="stat-label">Characters:</span>
+                    <span id="char-count" class="stat-value">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-icon">📏</span>
+                    <span class="stat-label">Lines:</span>
+                    <span id="line-count" class="stat-value">1</span>
+                </div>
+            </div>
+        </main>
+
+
+        <footer class="footer">
+            <p>Huthat Project @ 2025 🐾 </p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
