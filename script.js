@@ -8,14 +8,14 @@ const lineCount = document.getElementById('line-count');
 function updateCounters() {
     const text = notepad.value;
     
-    // Character count
+    
     charCount.textContent = text.length;
     
-    // Word count
+    
     const words = text.trim().split(/\s+/).filter(word => word.length > 0);
     wordCount.textContent = words.length === 0 ? 0 : words.length;
     
-    // Line count
+    
     const lines = text.split('\n');
     lineCount.textContent = lines.length || 1;
 }
@@ -61,36 +61,36 @@ function downloadPDF() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
-    // Colors
-    const kittyTitleColor = [72, 61, 139];  // DarkSlateBlue for title
-    const bodyText = [40, 40, 40];          // Dark gray body text
-    const lightGray = [130, 130, 130];      // Subtle gray for date
+    
+    const kittyTitleColor = [72, 61, 139];  
+    const bodyText = [40, 40, 40];          
+    const lightGray = [130, 130, 130];      
 
-    // Title
+    
     doc.setFont("helvetica", "bold");
     doc.setFontSize(20);
     doc.setTextColor(...kittyTitleColor);
     doc.text("Kitty Notepad", 105, 18, { align: "center" });
 
-    // Date
+    
     doc.setFont("helvetica", "italic");
     doc.setFontSize(10);
     doc.setTextColor(...lightGray);
     doc.text(`Created: ${new Date().toLocaleDateString()}`, 105, 26, { align: "center" });
 
-    // Stats (Words, Characters, Lines) - in header
+    
     doc.setFont("helvetica", "bold");
     doc.setFontSize(11);
-    doc.setTextColor(0, 0, 0); // pure black
+    doc.setTextColor(0, 0, 0); 
     const stats = `Words: ${wordCount.textContent} | Characters: ${charCount.textContent} | Lines: ${lineCount.textContent}`;
     doc.text(stats, 105, 34, { align: "center" });
 
-    // Separator line under header
+    
     doc.setDrawColor(200, 200, 200);
     doc.setLineWidth(0.3);
     doc.line(20, 38, 190, 38);
 
-    // Main Text
+    
     doc.setFont("times", "normal");
     doc.setFontSize(12);
     doc.setTextColor(...bodyText);
@@ -104,7 +104,7 @@ function downloadPDF() {
         if (y > pageHeight - 20) {
             doc.addPage();
 
-            // repeat header on new page
+            
             doc.setFont("helvetica", "bold");
             doc.setFontSize(20);
             doc.setTextColor(...kittyTitleColor);
@@ -143,7 +143,6 @@ function getTimestamp() {
 }
 
 function showNotification(message) {
-    // Create notification element
     const notification = document.createElement('div');
     notification.className = 'notification';
     notification.innerHTML = `
@@ -228,19 +227,19 @@ notepad.addEventListener('input', () => {
 
 
 document.addEventListener('keydown', (e) => {
-    // Ctrl/Cmd + S to save as TXT
+    
     if ((e.ctrlKey || e.metaKey) && e.key === 's') {
         e.preventDefault();
         downloadTxt();
     }
     
-    // Ctrl/Cmd + P to save as PDF
+    
     if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
         e.preventDefault();
         downloadPDF();
     }
     
-    // Ctrl/Cmd + L to clear
+    
     if ((e.ctrlKey || e.metaKey) && e.key === 'l') {
         e.preventDefault();
         clearText();
@@ -255,7 +254,7 @@ document.querySelector('.floating-cat').addEventListener('click', function() {
     catMoodIndex = (catMoodIndex + 1) % catMoods.length;
     this.querySelector('.cat-emoji').textContent = catMoods[catMoodIndex];
     
-    // Add a little bounce animation
+
     this.style.animation = 'none';
     setTimeout(() => {
         this.style.animation = 'float 3s ease-in-out infinite, bounce 0.5s ease-out';
@@ -277,7 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadSavedContent();
     updateCounters();
     
-    // Welcome message
+
     if (!localStorage.getItem('kittyNotepadWelcomed')) {
         showNotification('Welcome to Kitty Notepad! 🐱💕');
         localStorage.setItem('kittyNotepadWelcomed', 'true');
@@ -291,10 +290,10 @@ notepad.addEventListener('keydown', function(e) {
         const start = this.selectionStart;
         const end = this.selectionEnd;
         
-        // Insert tab at cursor position
+        
         this.value = this.value.substring(0, start) + '\t' + this.value.substring(end);
         
-        // Move cursor after tab
+        
         this.selectionStart = this.selectionEnd = start + 1;
         
         updateCounters();
@@ -350,7 +349,7 @@ function createPawPrint() {
 let lastPawTime = 0;
 document.addEventListener('mousemove', () => {
     const now = Date.now();
-    if (now - lastPawTime > 500) { // Every 500ms
+    if (now - lastPawTime > 500) { 
         createPawPrint();
         lastPawTime = now;
     }
